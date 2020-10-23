@@ -1,4 +1,4 @@
-package com.pratthamarora.moviedb_clone.ui
+package com.pratthamarora.moviedb_clone.ui.trending
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
