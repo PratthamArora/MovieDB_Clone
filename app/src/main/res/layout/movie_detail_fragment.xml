@@ -19,13 +19,14 @@
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
+            <com.pratthamarora.moviedb_clone.utils.RatioImageView
                 android:id="@+id/ivBackdrop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"
+                app:ratio="1.78"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <ImageButton
@@ -60,11 +61,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <com.pratthamarora.moviedb_clone.utils.RatioImageView
                     android:id="@+id/ivPoster"
                     android:layout_width="120dp"
-                    android:layout_height="180dp"
+                    android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
+                    app:ratio="0.67"
                     tools:src="@tools:sample/avatars" />
 
                 <LinearLayout

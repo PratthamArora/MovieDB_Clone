@@ -58,8 +58,14 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
 
     private fun updateUI(movie: Movie) {
 
-        GlideApp.with(ivBackdrop).load("$POSTER_ORG_URL${movie.backdropPath}").into(ivBackdrop)
-        GlideApp.with(ivPoster).load("$POSTER_BASE_URL${movie.posterPath}").into(ivPoster)
+        GlideApp.with(ivBackdrop).load("$POSTER_ORG_URL${movie.backdropPath}")
+            .placeholder(R.drawable.ic_placeholder)
+            .error(R.drawable.ic_error).into(ivBackdrop)
+
+        GlideApp.with(ivPoster).load("$POSTER_BASE_URL${movie.posterPath}")
+            .placeholder(R.drawable.ic_placeholder)
+            .error(R.drawable.ic_error)
+            .into(ivPoster)
 
         tvTitle.text = movie.title
 

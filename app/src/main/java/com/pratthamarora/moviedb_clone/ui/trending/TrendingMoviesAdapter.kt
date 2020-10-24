@@ -23,6 +23,8 @@ class TrendingMoviesAdapter :
             itemView.apply {
                 GlideApp.with(moviePoster)
                     .load("$POSTER_BASE_URL${movie.posterPath}")
+                    .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_error)
                     .into(moviePoster)
                 movieTitleTV.text = movie.title
                 movieReleaseDateTV.text = movie.releaseDate
