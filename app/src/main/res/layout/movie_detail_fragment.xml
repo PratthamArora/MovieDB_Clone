@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.moviedetail.MovieDetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/ivBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard"
+                android:background="@drawable/ripple_bg"
+                android:padding="@dimen/standard_half"
+                android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/standard"
+        android:visibility="gone"
+        app:behavior_overlapTop="50dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivPoster"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:adjustViewBounds="true"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/standard_half"
+                    android:layout_toEndOf="@id/ivPoster"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        tools:text="@tools:sample/full_names" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvGenres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_quart"
+                        android:layout_marginBottom="@dimen/standard_quart"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        tools:text="Action | Crime" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvRuntime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/standard_quart"
+                            android:layout_marginBottom="@dimen/standard_quart"
+                            android:drawableStart="@drawable/ic_baseline_access_time_24"
+                            android:drawablePadding="@dimen/standard_quart"
+                            android:gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            tools:text="120 min" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvReleaseDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/standard"
+                            android:layout_marginTop="@dimen/standard_quart"
+                            android:layout_marginBottom="@dimen/standard_quart"
+                            android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                            android:drawablePadding="@dimen/standard_quart"
+                            android:gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            tools:text="@tools:sample/date/ddmmyy" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatRatingBar
+                            android:id="@+id/movieRating"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="true"
+                            android:theme="@style/AppTheme.RatingBar"
+                            tools:rating="3.5" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvVoteCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/standard_half"
+                            android:layout_marginTop="@dimen/standard_quart"
+                            android:layout_marginBottom="@dimen/standard_quart"
+                            android:drawableEnd="@drawable/ic_baseline_people_24"
+                            android:drawablePadding="@dimen/standard_half"
+                            android:gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            tools:text="160" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard"
+                android:layout_marginBottom="@dimen/standard"
+                android:text="@string/overview"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvOverviewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="5"
+                tools:text="@tools:sample/lorem/random" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/layout_loading" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

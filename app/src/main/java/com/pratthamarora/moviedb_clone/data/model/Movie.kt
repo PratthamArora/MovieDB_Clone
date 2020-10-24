@@ -36,5 +36,7 @@ data class Movie(
     @Json(name = "vote_average")
     val voteAverage: Double?,
     @Json(name = "vote_count")
-    val voteCount: Int?
+    val voteCount: Int?,
+    val genres: List<Genre>?,
+    val runtime: Long?
 )

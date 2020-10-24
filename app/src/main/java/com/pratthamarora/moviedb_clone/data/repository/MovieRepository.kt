@@ -1,5 +1,6 @@
 package com.pratthamarora.moviedb_clone.data.repository
 
+import com.pratthamarora.moviedb_clone.data.model.Movie
 import com.pratthamarora.moviedb_clone.data.model.Movies
 import com.pratthamarora.moviedb_clone.data.remote.MovieService
 import io.reactivex.rxjava3.core.Single
@@ -14,5 +15,9 @@ class MovieRepository @Inject constructor(
 
     fun getTrendingMovies(): Single<Movies> =
         movieService.getTrendingMovies()
+            .subscribeOn(Schedulers.io())
+
+    fun getMovieDetails(movieId: Long): Single<Movie> =
+        movieService.getMovieDetails(movieId)
             .subscribeOn(Schedulers.io())
 }

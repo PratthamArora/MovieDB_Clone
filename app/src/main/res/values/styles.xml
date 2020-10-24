@@ -1,13 +1,18 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.MovieDB_Clone" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">?attr/colorOnPrimary</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowBackground">@drawable/windows_bg</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.RatingBar">
+        <item name="colorControlNormal">#C6C2C2</item>
     </style>
 </resources>

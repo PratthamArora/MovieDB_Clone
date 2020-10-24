@@ -3,6 +3,7 @@ package com.pratthamarora.moviedb_clone.ui.trending
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pratthamarora.moviedb_clone.R
 import com.pratthamarora.moviedb_clone.data.model.Movie
@@ -26,6 +27,11 @@ class TrendingMoviesAdapter :
                 movieTitleTV.text = movie.title
                 movieReleaseDateTV.text = movie.releaseDate
                 movieOverviewTV.text = movie.overview
+                setOnClickListener {
+                    val action =
+                        TrendingFragmentDirections.actionTrendingFragmentToMovieDetailFragment(movie.id)
+                    it.findNavController().navigate(action)
+                }
             }
         }
 

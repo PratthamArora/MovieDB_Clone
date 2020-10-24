@@ -2,4 +2,6 @@
     <string name="app_name">MovieDB_Clone</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="overview">Overview</string>
+    <string name="format_runtime">%1$d min</string>
 </resources>
