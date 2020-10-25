@@ -41,6 +41,8 @@ def nav_version = "2.3.1"
 def retrofit_version = "2.9.0"
 def moshi_version = "1.11.0"
 def hilt_version = "2.28.3-alpha"
+def paging_version = "3.0.0-alpha04"
+
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
@@ -79,4 +81,8 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
+
 }

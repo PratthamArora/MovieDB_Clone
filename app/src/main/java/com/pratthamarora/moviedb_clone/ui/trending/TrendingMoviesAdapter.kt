@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pratthamarora.moviedb_clone.R
 import com.pratthamarora.moviedb_clone.data.model.Movie
@@ -12,10 +14,7 @@ import com.pratthamarora.moviedb_clone.utils.Constants.POSTER_BASE_URL
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class TrendingMoviesAdapter :
-    RecyclerView.Adapter<TrendingMoviesAdapter.TrendingMoviesViewHolder>() {
-
-    private var movies: List<Movie> = listOf()
-
+    PagingDataAdapter<Movie, TrendingMoviesAdapter.TrendingMoviesViewHolder>(COMPARATOR) {
 
     class TrendingMoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie) {
@@ -51,14 +50,21 @@ class TrendingMoviesAdapter :
     }
 
     override fun onBindViewHolder(holder: TrendingMoviesViewHolder, position: Int) {
-        val movie = movies[position]
-        holder.bind(movie)
+        val movie = getItem(position)
+        movie?.let { holder.bind(it) }
     }
 
-    override fun getItemCount(): Int = movies.size
 
-    fun setMovies(movies: List<Movie>) {
-        this.movies = movies
-        notifyDataSetChanged()
+    companion object {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<Movie>() {
+
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }

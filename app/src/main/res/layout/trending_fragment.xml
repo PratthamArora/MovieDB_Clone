@@ -30,5 +30,4 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:listitem="@layout/item_movie" />
 
-    <include layout="@layout/layout_loading" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
