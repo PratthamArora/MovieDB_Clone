@@ -38,7 +38,14 @@ class TrendingFragment : Fragment(R.layout.trending_fragment) {
         trendingMoviesAdapter = TrendingMoviesAdapter()
         rvMovies.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = trendingMoviesAdapter
+            adapter = trendingMoviesAdapter.withLoadStateHeaderAndFooter(
+                FooterStateAdapter {
+                    trendingMoviesAdapter.retry()
+                },
+                FooterStateAdapter {
+                    trendingMoviesAdapter.retry()
+                }
+            )
         }
     }
 
