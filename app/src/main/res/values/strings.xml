@@ -5,4 +5,5 @@
     <string name="overview">Overview</string>
     <string name="format_runtime">%1$d min</string>
     <string name="retry">Retry</string>
+    <string name="casts">Casts</string>
 </resources>

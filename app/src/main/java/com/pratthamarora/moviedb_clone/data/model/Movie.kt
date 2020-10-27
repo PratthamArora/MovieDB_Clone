@@ -38,5 +38,6 @@ data class Movie(
     @Json(name = "vote_count")
     val voteCount: Int?,
     val genres: List<Genre>?,
-    val runtime: Long?
+    val runtime: Long?,
+    val credits: Credit?
 )

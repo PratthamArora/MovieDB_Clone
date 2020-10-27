@@ -6,11 +6,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.pratthamarora.moviedb_clone.R
 import com.pratthamarora.moviedb_clone.data.model.Movie
 import com.pratthamarora.moviedb_clone.di.glide.GlideApp
+import com.pratthamarora.moviedb_clone.utils.Constants.MAX_CAST
 import com.pratthamarora.moviedb_clone.utils.Constants.POSTER_BASE_URL
 import com.pratthamarora.moviedb_clone.utils.Constants.POSTER_ORG_URL
 import com.pratthamarora.moviedb_clone.utils.Status.*
@@ -22,16 +23,29 @@ import kotlinx.android.synthetic.main.movie_detail_fragment.*
 class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
 
     private val viewModel by viewModels<MovieDetailViewModel>()
-    private val args by navArgs<MovieDetailFragmentArgs>()
+    private lateinit var castAdapter: CastAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initViews()
 
         backButton.setOnClickListener {
             it.findNavController().popBackStack()
         }
 
         subscribeToObservers()
+
+    }
+
+    private fun initViews() {
+        castAdapter = CastAdapter()
+        rvCast.apply {
+            isNestedScrollingEnabled = false
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = castAdapter
+        }
 
     }
 
@@ -95,6 +109,12 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
         tvOverviewBody.text = movie.overview
         parentLayout.isVisible = true
 
+        val cast = movie.credits?.cast
+        if (cast != null && cast.isNotEmpty()) {
+            // show only 10 casts
+            val castSize = if (cast.size <= MAX_CAST) cast.size else MAX_CAST
+            castAdapter.submitList(cast.take(castSize))
+        }
 
     }
 

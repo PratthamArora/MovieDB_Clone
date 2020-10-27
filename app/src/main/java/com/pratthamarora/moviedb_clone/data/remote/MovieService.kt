@@ -12,6 +12,6 @@ import retrofit2.http.Query
     @GET("trending/all/day")
     fun getTrendingMovies(@Query("page") page: Int): Single<Movies>
 
-    @GET("movie/{movieId}")
+    @GET("movie/{movieId}?append_to_response=credits")
     fun getMovieDetails(@Path("movieId") movieId: Long): Single<Movie>
 }

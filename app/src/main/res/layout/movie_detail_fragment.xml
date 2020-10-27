@@ -46,9 +46,8 @@
         android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/standard"
         android:visibility="gone"
-        app:behavior_overlapTop="50dp"
+        app:behavior_overlapTop="60dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:visibility="visible">
 
@@ -59,7 +58,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/standard">
 
                 <com.pratthamarora.moviedb_clone.utils.RatioImageView
                     android:id="@+id/ivPoster"
@@ -164,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/standard"
                 android:layout_marginBottom="@dimen/standard"
+                android:paddingHorizontal="@dimen/standard"
                 android:text="@string/overview"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
@@ -173,7 +174,28 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="5"
+                android:paddingHorizontal="@dimen/standard"
                 tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard"
+                android:layout_marginBottom="@dimen/standard"
+                android:paddingHorizontal="@dimen/standard"
+                android:text="@string/casts"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/standard_half"
+                android:paddingHorizontal="@dimen/standard"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_cast" />
 
         </LinearLayout>
 
