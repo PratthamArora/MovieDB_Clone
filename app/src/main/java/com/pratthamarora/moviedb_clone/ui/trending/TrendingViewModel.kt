@@ -12,7 +12,7 @@ import com.pratthamarora.moviedb_clone.data.repository.MovieRepository
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class TrendingViewModel @ViewModelInject constructor(
-    movieRepository: MovieRepository
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
     private val compoDisposable = CompositeDisposable()
 
@@ -20,6 +20,15 @@ class TrendingViewModel @ViewModelInject constructor(
     val trendingMovies: LiveData<PagingData<Movie>> get() = _trendingMovies
 
     init {
+        getTrendingMovies()
+    }
+
+    override fun onCleared() {
+        compoDisposable.clear()
+        super.onCleared()
+    }
+
+    private fun getTrendingMovies() {
         compoDisposable.add(
             movieRepository.getTrendingMovies()
                 .cachedIn(viewModelScope)
@@ -29,8 +38,7 @@ class TrendingViewModel @ViewModelInject constructor(
         )
     }
 
-    override fun onCleared() {
-        compoDisposable.clear()
-        super.onCleared()
+    fun onRefresh() {
+        getTrendingMovies()
     }
 }

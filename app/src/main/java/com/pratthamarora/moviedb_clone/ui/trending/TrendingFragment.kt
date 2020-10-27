@@ -2,11 +2,14 @@ package com.pratthamarora.moviedb_clone.ui.trending
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pratthamarora.moviedb_clone.R
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.error_layout.*
 import kotlinx.android.synthetic.main.trending_fragment.*
 
 @AndroidEntryPoint
@@ -19,7 +22,7 @@ class TrendingFragment : Fragment(R.layout.trending_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
+        initViews()
         subscribeToObservers()
 
 
@@ -34,7 +37,7 @@ class TrendingFragment : Fragment(R.layout.trending_fragment) {
         })
     }
 
-    private fun setupRecyclerView() {
+    private fun initViews() {
         trendingMoviesAdapter = TrendingMoviesAdapter()
         rvMovies.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -47,6 +50,27 @@ class TrendingFragment : Fragment(R.layout.trending_fragment) {
                 }
             )
         }
+
+        trendingMoviesAdapter.addLoadStateListener {
+            swipeRefreshLayout.isRefreshing = it.source.refresh is LoadState.Loading
+            errorContainer.isVisible = it.source.refresh is LoadState.Error
+            rvMovies.isVisible = !errorContainer.isVisible
+
+            if (it.source.refresh is LoadState.Error) {
+                btnRetry.setOnClickListener {
+                    trendingMoviesAdapter.retry()
+                }
+
+                errorContainer.isVisible = it.source.refresh is LoadState.Error
+                errorMsg.text = (it.source.refresh as LoadState.Error).error.message
+
+            }
+        }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.onRefresh()
+        }
+
     }
 
 
