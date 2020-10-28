@@ -6,4 +6,13 @@
     <string name="format_runtime">%1$d min</string>
     <string name="retry">Retry</string>
     <string name="casts">Casts</string>
+    <string name="birthday">Birthday</string>
+    <string name="age">Age</string>
+    <string name="place_of_birth">Place Of Birth</string>
+    <string name="department">Department</string>
+    <string name="also_known_as">Also Known As</string>
+    <string name="death">Death</string>
+    <string name="biography">Biography</string>
+    <string name="about">About</string>
+    <string name="photo">Photo</string>
 </resources>

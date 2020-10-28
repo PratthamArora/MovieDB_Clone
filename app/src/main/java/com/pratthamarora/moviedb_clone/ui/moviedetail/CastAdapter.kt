@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -40,7 +41,14 @@ class CastAdapter : ListAdapter<Cast, CastAdapter.CastViewHolder>(COMPARATOR) {
                     .error(R.drawable.ic_user)
                     .transform(CircleCrop())
                     .into(ivCast)
+
                 tvName.text = cast.name
+
+                setOnClickListener {
+                    val action =
+                        MovieDetailFragmentDirections.actionMovieDetailFragmentToCastFragment(cast)
+                    it.findNavController().navigate(action)
+                }
             }
 
         }
