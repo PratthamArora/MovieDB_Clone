@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/srlCast"
+    android:id="@+id/srl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cast.AboutFragment">
+    android:animateLayoutChanges="true"
+    tools:context=".ui.cast.about.AboutFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nsvCast"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <LinearLayout
+            android:paddingVertical="@dimen/standard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">

@@ -39,7 +39,7 @@ class CastFragment : Fragment(R.layout.fragment_cast) {
 
         tvName.text = cast.name
 
-        castViewPager.adapter = CastTabAdapter(this)
+        castViewPager.adapter = CastTabAdapter(this, cast.id)
         TabLayoutMediator(castTabs, castViewPager) { tab, pos ->
             when (pos) {
                 0 -> tab.text = getString(R.string.about)

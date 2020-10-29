@@ -3,6 +3,7 @@ package com.pratthamarora.moviedb_clone.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.rxjava3.flowable
+import com.pratthamarora.moviedb_clone.data.model.Cast
 import com.pratthamarora.moviedb_clone.data.model.Movie
 import com.pratthamarora.moviedb_clone.data.remote.MovieService
 import io.reactivex.rxjava3.core.Single
@@ -28,5 +29,9 @@ class MovieRepository @Inject constructor(
 
     fun getMovieDetails(movieId: Long): Single<Movie> =
         movieService.getMovieDetails(movieId)
+            .subscribeOn(Schedulers.io())
+
+    fun getCastDetails(castId: Long): Single<Cast> =
+        movieService.getCastDetails(castId)
             .subscribeOn(Schedulers.io())
 }

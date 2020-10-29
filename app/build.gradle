@@ -85,4 +85,8 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "androidx.paging:paging-rxjava3:$paging_version"
 
+    implementation 'com.squareup.inject:assisted-inject-annotations-dagger2:0.6.0'
+    kapt 'com.squareup.inject:assisted-inject-processor-dagger2:0.6.0'
+
+
 }

@@ -60,11 +60,13 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideMoshi(): Moshi = Moshi.Builder().build()
+    fun provideMoshi(): Moshi = Moshi.Builder()
+        .build()
 
     @Singleton
     @Provides
-    fun provideMoshiConverterFactory(): MoshiConverterFactory = MoshiConverterFactory.create()
+    fun provideMoshiConverterFactory(): MoshiConverterFactory =
+        MoshiConverterFactory.create()
 
     @Singleton
     @Provides

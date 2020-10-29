@@ -15,4 +15,5 @@
     <string name="biography">Biography</string>
     <string name="about">About</string>
     <string name="photo">Photo</string>
+    <string name="dash">-</string>
 </resources>
