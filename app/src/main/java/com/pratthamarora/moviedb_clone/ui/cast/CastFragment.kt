@@ -40,6 +40,7 @@ class CastFragment : Fragment(R.layout.fragment_cast) {
         tvName.text = cast.name
 
         castViewPager.adapter = CastTabAdapter(this, cast.id)
+        castViewPager.offscreenPageLimit = 2
         TabLayoutMediator(castTabs, castViewPager) { tab, pos ->
             when (pos) {
                 0 -> tab.text = getString(R.string.about)

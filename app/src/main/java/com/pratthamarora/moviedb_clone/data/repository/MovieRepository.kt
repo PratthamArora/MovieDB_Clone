@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.rxjava3.flowable
 import com.pratthamarora.moviedb_clone.data.model.Cast
 import com.pratthamarora.moviedb_clone.data.model.Movie
+import com.pratthamarora.moviedb_clone.data.model.ProfileImage
 import com.pratthamarora.moviedb_clone.data.remote.MovieService
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -34,4 +35,11 @@ class MovieRepository @Inject constructor(
     fun getCastDetails(castId: Long): Single<Cast> =
         movieService.getCastDetails(castId)
             .subscribeOn(Schedulers.io())
+
+    fun getCastImages(castId: Long): Single<List<ProfileImage>> =
+        movieService.getCastImages(castId)
+            .subscribeOn(Schedulers.io())
+            .map {
+                it.profiles
+            }
 }

@@ -3,6 +3,7 @@ package com.pratthamarora.moviedb_clone.data.remote
 import com.pratthamarora.moviedb_clone.data.model.Cast
 import com.pratthamarora.moviedb_clone.data.model.Movie
 import com.pratthamarora.moviedb_clone.data.model.Movies
+import com.pratthamarora.moviedb_clone.data.model.Profiles
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,4 +19,7 @@ interface MovieService {
 
     @GET("person/{id}")
     fun getCastDetails(@Path("id") castId: Long): Single<Cast>
+
+    @GET("person/{id}/images")
+    fun getCastImages(@Path("id") castId: Long): Single<Profiles>
 }
